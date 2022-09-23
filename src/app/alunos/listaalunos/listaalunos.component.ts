@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Aluno } from 'src/app/core/model';
+import { AlunosService } from '../alunos.service';
 
 @Component({
   selector: 'app-listaalunos',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListaalunosComponent implements OnInit {
 
-  constructor() { }
+  alunos: Aluno[]= [];
+
+  displayedColumns=['id','nomealuno']
+
+  constructor(private alunoService: AlunosService) { }
 
   ngOnInit(): void {
+    this.alunos = this.alunoService.listAluno();
   }
 
 }
